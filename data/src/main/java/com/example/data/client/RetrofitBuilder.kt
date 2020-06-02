@@ -1,9 +1,6 @@
 package com.example.data.client
 
-import android.content.Context
 import com.example.data.mapper.Mapper
-import com.example.data.source.remote.service.WetherService
-import com.example.domain.entity.EmptyResponse
 import com.example.domain.entity.Response
 import com.example.domain.entity.SuccessResponse
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory

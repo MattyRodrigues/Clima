@@ -11,11 +11,11 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 object MapperModule {
-    const val ForecastMapperNamed = "forecastServiceMapperNamed"
-    const val ForecastElementMapperNamed = "forecastElementMapperNamed"
+    private const val ForecastElementMapperNamed = "forecastElementMapperNamed"
+
     val mapperModules = module{
-        single<Mapper<ForecastResponse, Forecast>>(named(ForecastMapperNamed)) {
-            ForecastResponseToForecastMapper(forecastPrevisonMapper = get(named(ForecastElementMapperNamed))) }
+        single<Mapper<ForecastResponse, Forecast>> {
+            ForecastResponseToForecastMapper(forecastPrevisionMapper = get(named(ForecastElementMapperNamed))) }
 
         single<Mapper<ForecastElementResponse, ForecastElement>>(named(ForecastElementMapperNamed)) {
             ForecastElementResponseToForecastElementMapper()

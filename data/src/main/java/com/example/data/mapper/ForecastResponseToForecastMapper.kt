@@ -8,7 +8,8 @@ import com.example.domain.entity.ForecastElement
 import com.example.domain.entity.ForecastPrevision
 
 class ForecastResponseToForecastMapper(
-    private val forecastPrevisonMapper: Mapper<ForecastElementResponse, ForecastElement>) : Mapper<ForecastResponse, Forecast>(){
+    private val forecastPrevisionMapper: Mapper<ForecastElementResponse, ForecastElement>
+) : Mapper<ForecastResponse, Forecast>() {
     override fun transform(item: ForecastResponse?): Forecast =
         Forecast(
             by = item?.by,
@@ -30,7 +31,7 @@ class ForecastResponseToForecastMapper(
                     sunset = item?.forecastPrevisionResponse?.sunset,
                     conditionSlug = item?.forecastPrevisionResponse?.conditionSlug,
                     cityName = item?.forecastPrevisionResponse?.cityName,
-                    forecastResponse = item?.forecastPrevisionResponse?.forecastResponse?.map { forecastPrevisonMapper.transform(it) }),
+                    forecastResponse = item?.forecastPrevisionResponse?.forecastResponse?.map { forecastPrevisionMapper.transform(it) }),
             fromCache = item?.fromCache
         )
 }
